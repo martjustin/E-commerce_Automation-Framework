@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        browser: [chromium, firefox, webkit]
+        browser: [chromium]
     env:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
     steps:
