@@ -13,7 +13,6 @@ This isn't a toy suite pointed at a stable sandbox. It's built and hardened agai
 
 ## 📑 Table of Contents
 
-- [Why These Flows](#why-these-flows)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Setup](#setup)
@@ -113,7 +112,7 @@ npx playwright test -g "TC08"                  # single test case
 npx playwright show-report                     # open the last HTML report
 ```
 
-The suite runs against the **live public site** — expect each full run to take several minutes. `workers: 1` and `retries: 1` are deliberate (see [Configuration Notes](#configuration-notes)), not an oversight.
+The suite runs against the **live public site** — expect each full run to take several minutes. `workers: 1` and `retries: 1` are deliberate (see [Configuration Notes](#configuration-notes)).
 
 ---
 
@@ -160,16 +159,15 @@ The suite runs against the **live public site** — expect each full run to take
 
 ---
 
-## Known Limitations & Roadmap
-
+## Known Limitations 
 - **TC09 is a stub.** The test body is currently empty (no navigation, no assertions), so it passes trivially rather than verifying anything. It's listed here rather than silently claimed as coverage — implementing it (login as an existing user, then repeat the TC08 checkout flow) is the top open item.
-- **Firefox/WebKit/mobile are wired into fixtures and CI but disabled in `playwright.config.ts`** — re-enable once cross-browser stability against the live site is confirmed.
-- **No test-mode API or seeded data.** Every run creates real accounts against a real, shared database. Test data generation (`uniqueEmail()`) is designed around that constraint — see below.
+- **Firefox/WebKit/mobile are wired into fixtures and CI but disabled in `playwright.config.ts`** — to be re-enabled once cross-browser stability against the live site is confirmed.
+- **No test-mode API or seeded data.** Every run creates real accounts against a real, shared database. Test data generation (`uniqueEmail()`) 
 - **`npm run lint` has no ESLint config file yet** despite `eslint`/`typescript-eslint` being installed — add `.eslintrc`/`eslint.config.js` before relying on it in CI.
 
 ---
 
-## Design Notes: What Broke and Why
+## Design Notes: 
 
 This suite was debugged against the live site, not written and left alone. A few non-obvious findings worth keeping in mind if you extend it:
 
